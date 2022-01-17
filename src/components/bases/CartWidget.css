@@ -1,0 +1,4 @@
+.shoppingCart{
+    filter: invert(99%) sepia(58%) saturate(6%) hue-rotate(210deg) brightness(114%) contrast(92%);
+    height: 50px;
+}

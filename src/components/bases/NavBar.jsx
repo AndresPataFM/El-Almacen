@@ -1,9 +1,11 @@
 //Bases
 import React, {Fragment} from "react";
 import "./NavBar.css"
+//Componentes
+import CartWidget from "./CartWidget";
 //Imágenes
-import logo from "./../img/dog-pawprint-in-a-house.svg"
-import shoppingCart from "./../img/ShoppingCart.svg"
+import logo from "./../../img/dog-pawprint-in-a-house.svg"
+
 
 const NavBar = ()=>{
     return(
@@ -15,7 +17,7 @@ const NavBar = ()=>{
                 <h1>El Almacén</h1>
                 <div className="activeMenu">
                     <a href="#">
-                        <img src={shoppingCart} alt="Carrito de compras" className="shoppingCart"/>
+                        <CartWidget/>
                     </a>
                     <div className="menuHolder">
                         <button className="menuButton">☰</button>
