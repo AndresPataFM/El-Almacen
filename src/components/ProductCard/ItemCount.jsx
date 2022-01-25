@@ -20,7 +20,7 @@ const ItemCount = ({stock})=>{
     }
     return(
         <Fragment>
-            <div>
+            <div className="counter">
                 <button onClick={()=>{substract(initial)}}>-</button>
                 <p>{initial}</p>
                 <button onClick={()=>{add(stock, initial)}}>+</button>

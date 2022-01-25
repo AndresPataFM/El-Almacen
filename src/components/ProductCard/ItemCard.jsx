@@ -2,12 +2,12 @@ import React, {Fragment} from "react";
 import "./ItemCard.css";
 
 import ItemCount from "./ItemCount";
-import fakeproductList from "../../data/fakeproductList.js"
 
-const ItemCard = ()=>{
-    let product = fakeproductList[0]
+const ItemCard = ({item})=>{
+    let product = item
     return(
         <Fragment>
+            <button>Ver detalles(en progreso)</button>
             <p>{product.name}</p>
             <p>{product.code}</p>
             <p>{product.type}</p>
