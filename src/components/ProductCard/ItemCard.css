@@ -1,0 +1,12 @@
+.itemCard{
+    width: 300px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 5px outset blueviolet;
+}

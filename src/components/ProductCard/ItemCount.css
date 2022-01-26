@@ -1,4 +1,35 @@
 .counter{
     display: flex;
     height: fit-content;
+    margin: 4px;
+}
+.counter p{
+    margin: 0;
+    border-style: solid;
+    border:  2px solid blueviolet;
+    text-align: center;
+    padding-top: 2px;
+}
+.minusButton{
+    height: 25px;
+    width: 25px;
+    border-radius: 5px 0 0 5px;
+    text-align: center;
+    border:  3px outset blueviolet;
+}
+.minusButton:hover{
+    border: 3px inset blueviolet;
+    font-weight: bold;
+}
+.plusButton{
+    height: 25px;
+    width: 25px;
+    border-radius: 0 5px 5px 0;
+    text-align: center;
+    border:  3px outset blueviolet;
+    font-weight: bold;
+}
+.plusButton:hover{
+    border: 3px inset blueviolet;
+    
 }

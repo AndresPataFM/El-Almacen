@@ -38,6 +38,8 @@
 }
 
 body{
-  font-size: 18;
   background-color: whitesmoke;
+  font-size: 18;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  color: #444444;
 }
