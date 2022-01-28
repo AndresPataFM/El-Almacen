@@ -1,10 +1,10 @@
 import React, {Fragment, useState} from "react";
-import "./ItemCard.css";
+import "./Item.css";
 
-import ItemCount from "./ItemCount";
-import ItemDetailContainer from "./ItemDetailContainer"
+import ItemCount from "./ItemComponents/ItemCount";
+import ItemDetailContainer from "./ItemComponents/ItemDetailContainer"
 
-const ItemCard = ({item})=>{
+const Item = ({item})=>{
     let product = item
     const [showChild, setShowChild] = useState(false);
     const [description, setDescription] = useState([])
@@ -29,15 +29,16 @@ const ItemCard = ({item})=>{
     }
     return(
         <Fragment>
-            <div className="itemCard" id={"item"+product.name+product.code} key={product.code}>
+            <div className="itemCard" id={"item"+product.name+product.id} key={product.id}>
                 <p>{product.name}</p>
                 <button onClick={()=>{descButton(true)}}>Ver detalles</button>
-                {showChild && <ItemDetailContainer item={description}/>}
+                {showChild && <ItemDetailContainer item={description} key={"desc"+product.key}/>}
                 <p>Stock: {product.stock}</p>
                 <ItemCount stock={product.stock}/>
+                <button>Agregar</button>
             </div>
         </Fragment>
     )
 }
 
-export default ItemCard
+export default Item

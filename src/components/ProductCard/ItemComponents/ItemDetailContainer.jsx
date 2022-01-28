@@ -1,19 +1,18 @@
 import React, {Fragment, useState} from "react";
 import "./ItemDetailContainer.css"
-import fallback from "./../../img/products/fallback.png"
+import fallback from "./../../../img/products/fallback.png"
 
 
 const ItemDetailContainer = ({item})=>{
     let img
     try{
-        img = require(`./../../img/products/${item.name+item.code}.png`)
+        img = require(`./../../../img/products/${item.name+item.id}.png`)
     } catch {
         img =  fallback
     }
-    // const img = require(`./../../img/products/${item.name+item.code}.png`)
     return(
         <Fragment>
-            <div key={"Desc"+item.code}>
+            <div key={"Desc"+item.id}>
                 <img src={img} alt={item.name} />
                 <p><span className="tag">Tipo: </span>{item.type}</p>
                 <p><span className="tag">Descripción: </span>{item.description}.</p>
