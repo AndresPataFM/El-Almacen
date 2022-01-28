@@ -5,7 +5,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = ({item})=>{
     const [description, setDescription] = useState([])
-    useEffect((item)=>{
+    useEffect(()=>{
         const getDesc =  new Promise((resolve,reject)=>{
             setTimeout(()=>{
                 description ? resolve(item) : reject("error 404")
