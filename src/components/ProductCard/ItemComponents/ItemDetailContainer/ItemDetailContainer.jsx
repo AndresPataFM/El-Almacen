@@ -14,7 +14,7 @@ const ItemDetailContainer = ({item})=>{
         getDesc.then((resolve)=>{setDescription(resolve)})
     }, []);
     return(
-        <ItemDetail item={item}/>
+        <ItemDetail item={description}/>
     )
 }
 
