@@ -1,12 +1,12 @@
-import React, {Fragment, useState} from "react";
-import "./ItemDetailContainer.css"
-import fallback from "./../../../img/products/fallback.png"
+import React, {Fragment} from "react";
+import "./ItemDetail.css"
+import fallback from "./../../../../img/products/fallback.png"
 
 
-const ItemDetailContainer = ({item})=>{
+const ItemDetail = ({item})=>{
     let img
     try{
-        img = require(`./../../../img/products/${item.name+item.id}.png`)
+        img = require(`./../../../../img/products/${item.name+item.id}.png`)
     } catch {
         img =  fallback
     }
@@ -22,4 +22,4 @@ const ItemDetailContainer = ({item})=>{
     )
 }
 
-export default ItemDetailContainer
+export default ItemDetail

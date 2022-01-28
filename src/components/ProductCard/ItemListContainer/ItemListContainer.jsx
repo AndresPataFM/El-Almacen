@@ -1,8 +1,8 @@
 import React, {Fragment, useState, useEffect} from "react";
-import prodList from "../../data/fakeproductList";
+import prodList from "../../../data/fakeproductList";
 import "./ItemListContainer.css";
 
-import ItemList from "../ProductCard/ItemList";
+import ItemList from "../ItemList/ItemList";
 
 const greeting = "¡Bienvenidos a El Almacen, donde nos aseguramos de cuidar a sus mascotas y a usted! "
 const siteDesc = "En nuestro humilde local proveemos servicios de petshop y adopción con los estándares más altos del mercado. ¡Si el producto no cumple con los requisitos, recibirá una devolución garantizada!"

@@ -1,5 +1,5 @@
 import React, {Fragment, useState, useEffect} from "react";
-import Item from "./Item"
+import Item from "../Item/Item"
 import "./ItemList.css";
 
 
