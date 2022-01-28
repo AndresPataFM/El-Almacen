@@ -11,7 +11,7 @@ import logo from "./../../img/dog-pawprint-in-a-house.svg"
 const NavBar = ()=>{
     return(
         <header>
-            <Link to={"/El-Almacen"}>
+            <Link to={"/"}>
                 <img src={logo} alt="logo" className="logo"/>
             </Link>
             <h1>El Almacén</h1>
@@ -22,8 +22,8 @@ const NavBar = ()=>{
                 <div className="menuHolder">
                     <button className="menuButton">☰</button>
                     <ul className="menu">
-                        <li><Link to={"/El-Almacen"}>Home</Link></li>
-                        <li><Link to={"/El-Almacen/nosotros"}>Nosotros</Link></li>
+                        <li><Link to={"/"}>Home</Link></li>
+                        <li><Link to={"/nosotros"}>Nosotros</Link></li>
                         <li><Link to={""}>Contacto</Link></li>
                     </ul>
                 </div>
