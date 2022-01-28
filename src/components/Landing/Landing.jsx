@@ -1,15 +1,13 @@
-import React, {Fragment} from "react";
+import React from "react";
 import "./Landing.css"
 
 import ItemListContainer from "../ProductCard/ItemListContainer/ItemListContainer";
 
 const Landing = ()=>{
     return(
-        <Fragment>
-            <section className="mainLanding">
-                <ItemListContainer/>
-            </section>
-        </Fragment>
+        <section className="mainLanding">
+            <ItemListContainer/>
+        </section>
     )
 }
 

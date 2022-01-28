@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {useState} from "react";
 import "./ItemCount.css"
 
 
@@ -19,13 +19,11 @@ const ItemCount = ({stock})=>{
         }
     }
     return(
-        <Fragment>
-            <div className="counter">
-                <button onClick={()=>{substract(initial)}} className="minusButton">-</button>
-                <p>&nbsp;{initial}&nbsp;</p>
-                <button onClick={()=>{add(stock, initial)}} className="plusButton">+</button>
-            </div>
-        </Fragment>
+        <div className="counter">
+            <button onClick={()=>{substract(initial)}} className="minusButton">-</button>
+            <p>&nbsp;{initial}&nbsp;</p>
+            <button onClick={()=>{add(stock, initial)}} className="plusButton">+</button>
+        </div>
     )
 }
 

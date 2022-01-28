@@ -1,5 +1,6 @@
 //Bases
-import React, {Fragment} from "react";
+import React, {useState} from "react";
+import { Link } from "react-router-dom";
 import "./NavBar.css"
 //Componentes
 import CartWidget from "./CartWidget";
@@ -9,27 +10,25 @@ import logo from "./../../img/dog-pawprint-in-a-house.svg"
 
 const NavBar = ()=>{
     return(
-        <Fragment>
-            <header>
-                <a href="#">
-                    <img src={logo} alt="logo" className="logo"/>
-                </a>
-                <h1>El Almacén</h1>
-                <div className="activeMenu">
-                    <a href="#">
-                        <CartWidget/>
-                    </a>
-                    <div className="menuHolder">
-                        <button className="menuButton">☰</button>
-                        <ul className="menu">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Tienda</a></li>
-                            <li><a href="#">Contacto</a></li>
-                        </ul>
-                    </div>
+        <header>
+            <Link to={"/El-Almacen"}>
+                <img src={logo} alt="logo" className="logo"/>
+            </Link>
+            <h1>El Almacén</h1>
+            <div className="activeMenu">
+                <Link to={'/cart'}>
+                    <CartWidget/>
+                </Link>
+                <div className="menuHolder">
+                    <button className="menuButton">☰</button>
+                    <ul className="menu">
+                        <li><Link to={"/El-Almacen"}>Home</Link></li>
+                        <li><Link to={"/El-Almacen/nosotros"}>Nosotros</Link></li>
+                        <li><Link to={""}>Contacto</Link></li>
+                    </ul>
                 </div>
-            </header>
-        </Fragment>
+            </div>
+        </header>
     )
 }
 export default NavBar

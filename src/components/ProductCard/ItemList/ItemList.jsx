@@ -1,6 +1,7 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, {Fragment} from "react";
 import Item from "../Item/Item"
 import "./ItemList.css";
+
 
 
 
@@ -15,7 +16,6 @@ const ItemList = ({item})=>{
             <div className="cardContainer" id="cardContainer">
                 {products.map(x => <Item item={x} />)}
             </div>
-            
         </Fragment>
     )
 }

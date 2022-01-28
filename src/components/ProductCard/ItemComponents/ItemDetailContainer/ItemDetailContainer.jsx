@@ -1,4 +1,4 @@
-import React, {Fragment, useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import "./ItemDetailContainer.css"
 import ItemDetail from "../ItemDetail/ItemDetail";
 
@@ -14,9 +14,7 @@ const ItemDetailContainer = ({item})=>{
         getDesc.then((resolve)=>{setDescription(resolve)})
     }, []);
     return(
-        <Fragment>
-            <ItemDetail item={item}/>
-        </Fragment>
+        <ItemDetail item={item}/>
     )
 }
 
