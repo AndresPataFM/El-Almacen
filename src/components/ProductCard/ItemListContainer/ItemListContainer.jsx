@@ -17,17 +17,6 @@ const ItemListContainer = ()=>{
         });
         getItems.then((resolve)=>{setProducts(resolve)})
     }, []);
-    /*Legacy
-    const [products, setProducts] = useState([])
-    const loading =  function(){
-        const fakeLoading =  new Promise(function(resolve) {
-                setTimeout(function(){
-                    resolve(setProducts(prodList))
-                }, 2000);
-            });
-        return fakeLoading
-    }
-    loading().then()*/
     return(
         <Fragment>
             <p>{greeting}</p>

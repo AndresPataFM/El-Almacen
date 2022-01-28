@@ -14,7 +14,7 @@ const ItemList = ({item})=>{
         <Fragment>
             <h3>Productos</h3>
             <div className="cardContainer" id="cardContainer">
-                {products.map(x => <Item item={x} />)}
+                {products.map(x => <Item item={x} key={"item"+x.name+x.id}/>)}
             </div>
         </Fragment>
     )
