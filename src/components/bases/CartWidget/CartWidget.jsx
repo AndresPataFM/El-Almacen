@@ -2,7 +2,7 @@ import React from "react";
 
 import "./CartWidget.css"
 
-import shoppingCart from "./../../img/ShoppingCart.svg"
+import shoppingCart from "./../../../img/ShoppingCart.svg"
 
 const CartWidget = ()=>{
     return(

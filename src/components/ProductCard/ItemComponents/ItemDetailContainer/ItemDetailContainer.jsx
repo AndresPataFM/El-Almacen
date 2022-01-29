@@ -12,7 +12,7 @@ const ItemDetailContainer = ({item})=>{
             }, 2000)
         });
         getDesc.then((resolve)=>{setDescription(resolve)})
-    }, [item]);
+    }, [item, description]);
     return(
         <ItemDetail item={description}/>
     )
