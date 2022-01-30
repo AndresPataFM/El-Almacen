@@ -4,6 +4,5 @@
     grid-template-rows: auto;
     grid-column-gap: 25px;
     grid-row-gap: 20px;
-    width: 80%;
     justify-items: center;
 }

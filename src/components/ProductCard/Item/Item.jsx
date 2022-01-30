@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useNavigate } from 'react-router-dom';
 import "./Item.css";
 
 import ItemCount from "../ItemComponents/ItemCount/ItemCount";
@@ -8,6 +9,7 @@ import ItemDetailContainer from "../ItemComponents/ItemDetailContainer/ItemDetai
 const Item = ({item})=>{
     let product = item
     const [showChild, setShowChild] = useState(false);
+    const navigate = useNavigate()
     const descriptionToggle = ()=>{
         if(showChild){
             setShowChild(false)
@@ -15,14 +17,16 @@ const Item = ({item})=>{
             setShowChild(true)
         }
     }
+    const goToItem = () =>{
+        navigate(`/${item.type}/${item.id}`)
+    }
     return(
         <div className="itemCard" id={"item"+product.name+product.id} key={product.id}>
             <p>{product.name}</p>
             <button onClick={()=>{descriptionToggle()}}>Ver detalles</button>
             {showChild && <ItemDetailContainer item={product} key={"desc"+product.key}/>}
-            <p>Stock: {product.stock}</p>
-            <ItemCount stock={product.stock}/>
-            <button>Agregar</button>
+            <p>Precio: ${product.price}</p>
+            <button onClick={()=>{goToItem()}}>Test</button>
         </div>
     )
 }
