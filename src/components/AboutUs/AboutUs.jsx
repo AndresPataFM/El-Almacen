@@ -18,7 +18,7 @@ const AboutUs = ()=>{
         AOS.init({
             duration : 2000
         });
-    }, [AOS]);
+    }, []);
     return(
         <section>
             <h2>Sobre Nosotros</h2>

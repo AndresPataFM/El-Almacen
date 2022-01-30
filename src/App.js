@@ -51,7 +51,7 @@ function App() {
       setBasket(tempBasket)
       Swal.fire({
         title: `Felicitaciones`,
-        text: `Se ha agregado ${quantity} unidad/es de ${item.name} a su canasta`,
+        text: `Se ha agregado ${quantity} unidad/es de ${item.name} a su canasta.`,
         width: 600,
         padding: '3em',
         color: '#8A2BE2',
@@ -59,6 +59,32 @@ function App() {
             rgba(138,43,226,0.4)
         `
     })
+    }
+  }
+  const buyBasket = (bskt, total)=>{
+    let basketCount = bskt.length
+    if(basketCount<1){
+      Swal.fire(
+        'Error',
+        'Necesita agregar productos a su canasta para comprar.',
+        'error'
+      )
+    } else {
+      let tempProducts = products
+      tempProducts.forEach(x=>{
+        bskt.forEach(y=>{
+          if(y.item.code === x.code){
+            x.stock-=y.quantity
+          }
+        })
+      })
+      Swal.fire(
+        'Gracias por comprar',
+        `Ha comprado ${basketCount} productos distintos por un total de $${total}`,
+        'success'
+      )
+      setBasket([])
+      setProducts(tempProducts)
     }
   }
   //Funcion que remueve productos de la canasta
@@ -76,7 +102,7 @@ function App() {
         <NavBar/>
         <Routes>
           <Route path="/" exact element={<Landing prodList={products}/>}/>
-          <Route path="/canasta" element={<Cart basket={basket} removeBasket={removeBasket}/>}/>
+          <Route path="/canasta" element={<Cart basket={basket} removeBasket={removeBasket} buyBasket={buyBasket}/>}/>
           <Route path="/:type/:id" element={<ItemDetailContainer prodList={products} addBasket={addBasket}/>}/>
           <Route path="/nosotros" element={<AboutUs/>}/>
           <Route path="/adopcion" element={<Adoption/>}/>

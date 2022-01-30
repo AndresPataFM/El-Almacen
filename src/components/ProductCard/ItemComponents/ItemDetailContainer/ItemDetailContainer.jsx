@@ -17,7 +17,7 @@ const ItemDetailContainer = ({prodList, addBasket})=>{
         getDesc.then((resolve)=>{setDescription(resolve)})
     }, [currentItem, description]);
     return(
-            <ItemDetail item={description} addBasket={addBasket}/>
+            <ItemDetail item={description} addBasket={addBasket} key={"detailItem"+type}/>
     )
 }
 
