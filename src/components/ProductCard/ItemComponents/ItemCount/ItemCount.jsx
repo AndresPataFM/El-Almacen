@@ -8,36 +8,36 @@ import Swal from 'sweetalert2'
 
 const ItemCount = ({item, addBasket})=>{
     //Estado del contador
-    const [initial, setInitial] = useState(1)
+    const [count, setCount] = useState(1)
     //Estado de los botones
     const [showAddBasket, setShowAddBasket] = useState(true)
     const [showReturn, setShowReturn] = useState(false)
     //resto de las Variables
     let stock = item.stock
     //Aumenta el contador en 1
-    const add = (stock, initial)=>{
-        if(stock>initial){
-            setInitial(initial+1)
-        } else if (stock>=initial){
+    const add = (stock, count)=>{
+        if(stock>count){
+            setCount(count+1)
+        } else if (stock>=count){
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
                 text: 'No hay suciciente stock como para cumplir con su pedido',
             })
-            setInitial(stock)
+            setCount(stock)
         }
     }
     //Reduce el contador en 1
-    const substract = (initial)=>{
-        if(1<initial){
-            setInitial(initial-1)
-        } else if (initial<=2){
+    const substract = (count)=>{
+        if(1<count){
+            setCount(count-1)
+        } else if (count<=2){
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
                 text: 'Mínimo se debe de comprar 1 producto',
             })
-            setInitial(1)
+            setCount(1)
         }
     }
     //Funciones para mostrar/ocultar botones
@@ -51,28 +51,18 @@ const ItemCount = ({item, addBasket})=>{
         }
     }
     //Funcion que temporalmente emula agregar algo al carro
-    const addToCart = (item)=>{
-        addBasket(item)
-        Swal.fire({
-            title: `Felicitaciones`,
-            text: `Se ha agregado ${initial} unidad/es de ${item.name} a su canasta`,
-            width: 600,
-            padding: '3em',
-            color: '#8A2BE2',
-            backdrop: `
-                rgba(138,43,226,0.4)
-            `
-        })
+    const addToCart = (item, quantity)=>{
+        addBasket(item, quantity)
         buttonToggle()
     }
     return(
         <Fragment>
             <div className="counter">
-                <button onClick={()=>{substract(initial)}} className="minusButton">-</button>
-                <p>&nbsp;{initial}&nbsp;</p>
-                <button onClick={()=>{add(stock, initial)}} className="plusButton">+</button>
+                <button onClick={()=>{substract(count)}} className="minusButton">-</button>
+                <p>&nbsp;{count}&nbsp;</p>
+                <button onClick={()=>{add(stock, count)}} className="plusButton">+</button>
             </div>
-            {showAddBasket && <button className="addToCartButton" onClick={()=>{addToCart(item)}}>Agregar</button>}
+            {showAddBasket && <button className="addToCartButton" onClick={()=>{addToCart(item, count)}}>Agregar</button>}
             {showReturn && <Link to={"/"}><button>Comprar más</button></Link>}
         </Fragment>
     )
