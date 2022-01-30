@@ -15,7 +15,7 @@ const ItemListContainer = ({prodList})=>{
             }, 2000)
         });
         getItems.then((resolve)=>{setProducts(resolve)})
-    }, []);
+    }, [prodList]);
     return(
         <Fragment>
             <p>{greeting}</p>
