@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import "./Item.css";
 
-import ItemCount from "../ItemComponents/ItemCount/ItemCount";
 import ItemDetailContainer from "../ItemComponents/ItemDetailContainer/ItemDetailContainer"
 
 
