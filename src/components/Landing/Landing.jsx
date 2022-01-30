@@ -3,10 +3,10 @@ import "./Landing.css"
 
 import ItemListContainer from "../ProductCard/ItemListContainer/ItemListContainer";
 
-const Landing = ()=>{
+const Landing = ({prodList})=>{
     return(
         <section className="mainLanding">
-            <ItemListContainer/>
+            <ItemListContainer prodList={prodList}/>
         </section>
     )
 }

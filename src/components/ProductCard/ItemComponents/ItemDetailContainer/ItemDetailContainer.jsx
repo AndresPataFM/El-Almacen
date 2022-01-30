@@ -4,15 +4,10 @@ import "./ItemDetailContainer.css"
 // Components
 import ItemDetail from "../ItemDetail/ItemDetail";
 
-// Data
-import fakeproductList from "./../../../../data/fakeproductList"
-
-
-const ItemDetailContainer = ()=>{
+const ItemDetailContainer = ({prodList, addBasket})=>{
     const [description, setDescription] = useState([])
     const {type, id} = useParams()
-    const products = fakeproductList
-    const currentItem = products.filter(x =>x.id===id)[0]
+    const currentItem = prodList.filter(x =>x.id===id)[0]
     useEffect(()=>{
         const getDesc =  new Promise((resolve,reject)=>{
             setTimeout(()=>{
@@ -22,11 +17,7 @@ const ItemDetailContainer = ()=>{
         getDesc.then((resolve)=>{setDescription(resolve)})
     }, [currentItem, description]);
     return(
-        <>
-            <ItemDetail item={description}/>
-            <p>{type}</p>
-            <p>{id}</p>
-        </>
+            <ItemDetail item={description} addBasket={addBasket}/>
     )
 }
 

@@ -7,7 +7,7 @@ import fallback from "./../../../../img/products/fallback.png"
 
 
 
-const ItemDetail = ({item})=>{
+const ItemDetail = ({item, basket, addBasket, removeBasket})=>{
     let img
     try{
         img = require(`./../../../../img/products/${item.name+item.id}.png`)
@@ -16,12 +16,12 @@ const ItemDetail = ({item})=>{
     }
     return(
         <div key={"Desc"+item.id}>
+            <h3 className="descName">{item.name}</h3>
             <img src={img} alt={item.name} />
             <p><span className="tag">Tipo: </span>{item.type}</p>
             <p><span className="tag">Descripción: </span>{item.description}.</p>
             <p><span className="tag">Precio: </span>${item.price}</p>
-            <ItemCount stock={item.stock}/>
-            <button>Agregar</button>
+            <ItemCount item={item} addBasket={addBasket}/>
         </div>
     )
 }
