@@ -7,7 +7,6 @@ const CartItemContainer = ({basket, removeBasket, buyBasket})=>{
     const [basketTotal, setBasketTotal] = useState(0)
     const [basketChange, setBasketChange] = useState(true)
     const [loading, setLoading] = useState(false)
-    console.log(basket)
     useEffect(()=>{
         const getTotal =  new Promise((resolve,reject)=>{
             setTimeout(()=>{
