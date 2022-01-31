@@ -6,6 +6,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 
 const ItemDetailContainer = ({prodList, addBasket})=>{
     const [description, setDescription] = useState([])
+    const [loading, setLoading] = useState(false)
     const {type, id} = useParams()
     const currentItem = prodList.filter(x =>x.id===id)[0]
     useEffect(()=>{
@@ -14,10 +15,16 @@ const ItemDetailContainer = ({prodList, addBasket})=>{
                 description ? resolve(currentItem) : reject("error 404")
             }, 2000)
         });
-        getDesc.then((resolve)=>{setDescription(resolve)})
+        getDesc.then((resolve)=>{
+            setDescription(resolve)
+            setLoading(true)
+        })
     }, [currentItem, description]);
     return(
-            <ItemDetail item={description} addBasket={addBasket} key={"detailItem"+type}/>
+        <section className="itemDetailContainerSection" >
+            <h2>Producto</h2>
+            <ItemDetail loading={loading} item={description} addBasket={addBasket} key={"detailItem"+type}/>
+        </section>
     )
 }
 

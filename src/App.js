@@ -10,6 +10,7 @@ import AboutUs from './components/AboutUs/AboutUs';
 import Adoption from './components/Adoption/Adoption';
 import Contact from './components/Contact/Contact';
 import ItemDetailContainer from './components/ProductCard/ItemComponents/ItemDetailContainer/ItemDetailContainer';
+import Category from './components/Category/Category';
 //Libraries
 import Swal from 'sweetalert2';
 
@@ -99,11 +100,12 @@ function App() {
   }
   return (
       <BrowserRouter>
-        <NavBar/>
+        <NavBar size={basket.length}/>
         <Routes>
           <Route path="/" exact element={<Landing prodList={products}/>}/>
           <Route path="/canasta" element={<Cart basket={basket} removeBasket={removeBasket} buyBasket={buyBasket}/>}/>
           <Route path="/:type/:id" element={<ItemDetailContainer prodList={products} addBasket={addBasket}/>}/>
+          <Route path="/:type" element={<Category prodList={products} addBasket={addBasket}/>}/>
           <Route path="/nosotros" element={<AboutUs/>}/>
           <Route path="/adopcion" element={<Adoption/>}/>
           <Route path="/contacto" element={<Contact/>}/>

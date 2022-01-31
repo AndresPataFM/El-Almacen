@@ -5,7 +5,6 @@ import CartItem from "../CartItem/CartItem";
 const CartItemContainer = ({basket, removeBasket, buyBasket})=>{
     const [basketTotal, setBasketTotal] = useState(0)
     const [basketState, setBasketState] = useState(false)
-
     useEffect(()=>{
         const getTotal =  new Promise((resolve,reject)=>{
             setTimeout(()=>{
