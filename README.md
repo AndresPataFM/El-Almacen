@@ -3,7 +3,7 @@
 Esta pagina es un ecommerce creado en react que simula una petshop con servicios de adopción (la parte de adopción esta en desarrollo).
 
 ## Routing
-![Routing]("./src/img/ElAlmacen.gif")
+![Routing](./src/img/ElAlmacen.gif)
 
 
 ### Pre-requisitos
