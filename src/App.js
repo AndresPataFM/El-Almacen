@@ -104,8 +104,8 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Landing prodList={products}/>}/>
           <Route path="/canasta" element={<Cart basket={basket} removeBasket={removeBasket} buyBasket={buyBasket}/>}/>
-          <Route path="/:type/:id" element={<ItemDetailContainer prodList={products} addBasket={addBasket}/>}/>
-          <Route path="/:type" element={<Category prodList={products} addBasket={addBasket}/>}/>
+          <Route path="/item/:id" element={<ItemDetailContainer prodList={products} addBasket={addBasket}/>}/>
+          <Route path="/category/:type" element={<Category prodList={products} addBasket={addBasket}/>}/>
           <Route path="/nosotros" element={<AboutUs/>}/>
           <Route path="/adopcion" element={<Adoption/>}/>
           <Route path="/contacto" element={<Contact/>}/>

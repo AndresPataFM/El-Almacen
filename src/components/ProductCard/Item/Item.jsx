@@ -9,7 +9,7 @@ const Item = ({item})=>{
     let img
     const navigate = useNavigate()
     const goToItem = () =>{
-        navigate(`/${item.type}/${item.id}`)
+        navigate(`/item/${item.id}`)
     }
     try{
         img = require(`./../../../img/products/${item.name+item.id}.png`)

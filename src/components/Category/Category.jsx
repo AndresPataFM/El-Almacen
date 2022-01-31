@@ -5,10 +5,10 @@ import ItemListContainer from "../ProductCard/ItemListContainer/ItemListContaine
 import { useParams } from "react-router-dom";
 
 const Category = ({prodList})=>{
-    const type = useParams()
+    const { type } = useParams()
     let tempProducts = []
     const categoryBuilder = (x)=>{
-        if(x.type === type.type){
+        if(x.type === type){
             tempProducts.push(x)
         }
     }

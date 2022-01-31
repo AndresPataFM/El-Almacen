@@ -63,8 +63,10 @@ const ItemCount = ({item, addBasket})=>{
                 <button onClick={()=>{add(stock, count)}} className="plusButton">+</button>
             </div>
             {showAddBasket && <button className="addToCartButton" onClick={()=>{addToCart(item, count)}}>Agregar</button>}
-            {showReturn && <Link to={"/"}><button>Comprar más</button></Link>}
-            {showReturn && <Link to={"/canasta"}><button>Terminar Compra</button></Link>}
+            {showReturn && <div className="buttonContainer">
+                <Link to={"/"}><button className="purchaseMore">Comprar más</button></Link>
+                <Link to={"/canasta"}><button className="toBasket"> Terminar Compra</button></Link>
+            </div>}
         </Fragment>
     )
 }

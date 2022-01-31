@@ -7,7 +7,7 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 const ItemDetailContainer = ({prodList, addBasket})=>{
     const [description, setDescription] = useState([])
     const [loading, setLoading] = useState(false)
-    const {type, id} = useParams()
+    const { id } = useParams()
     const currentItem = prodList.filter(x =>x.id===id)[0]
     useEffect(()=>{
         const getDesc =  new Promise((resolve,reject)=>{
@@ -23,7 +23,7 @@ const ItemDetailContainer = ({prodList, addBasket})=>{
     return(
         <section className="itemDetailContainerSection" >
             <h2>Producto</h2>
-            <ItemDetail loading={loading} item={description} addBasket={addBasket} key={"detailItem"+type}/>
+            <ItemDetail loading={loading} item={description} addBasket={addBasket} key={"detailItem"}/>
         </section>
     )
 }

@@ -33,3 +33,22 @@
     border: 3px inset blueviolet;
     
 }
+
+.addToCartButton{
+    width: 80px;
+    border:  3px outset blueviolet;
+    border-radius: 5px;
+    font-weight: bold;
+
+}
+.buttonContainer{
+    display: flex;
+}
+.purchaseMore{
+    margin: 2px;
+    border:  3px outset green;
+}
+.toBasket{
+    margin: 2px;
+    border:  3px outset crimson;
+}

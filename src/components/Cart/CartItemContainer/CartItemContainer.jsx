@@ -3,40 +3,43 @@ import React, { useState, useEffect } from 'react';
 import CartItem from "../CartItem/CartItem";
 
 const CartItemContainer = ({basket, removeBasket, buyBasket})=>{
+    const [tempBasket, setTempBasket] = useState([])
     const [basketTotal, setBasketTotal] = useState(0)
-    const [basketState, setBasketState] = useState(false)
+    const [basketChange, setBasketChange] = useState(true)
+    const [loading, setLoading] = useState(false)
+    console.log(basket)
     useEffect(()=>{
         const getTotal =  new Promise((resolve,reject)=>{
             setTimeout(()=>{
-                //Se fija si la canasta esta vacia
-                const checkBasket = ()=>{
-                    const exist = basket.length
-                    if(exist>0){
-                        setBasketState(true)
-                    }}
-                    checkBasket()
-                    //calcula el total de la canasta
-                    const calculateTotal = ()=>{
-                        let total = 0
-                        basket.forEach(x => {
-                            let itemTotal = x.item.price * x.quantity
-                            total += itemTotal
-                        });
-                        console.log(total)
-                        setBasketTotal(total)
-                    }
-                basketState ? resolve(calculateTotal()) : reject("basket is empty")
+                const calcuclateChange = ()=>{
+                    setTempBasket(basket)
+                    setBasketChange(false)
+                } 
+                const calculateTotal = ()=>{
+                    let total = 0
+                    tempBasket.forEach(x => {
+                        let itemTotal = x.item.price * x.quantity
+                        total += itemTotal
+                    });
+                    setBasketTotal(total)
+                    setLoading(true)
+                }
+                basketChange ? resolve(calcuclateChange()) : reject(calculateTotal())
             }, 2000)
         });
         getTotal.then()
-    }, [basketState, basket]);
+    }, [basketChange, basket, tempBasket]);
     return(
         <div>
-            <ul>
-                {basket.map(x => <CartItem basketItem={x} removeBasket={removeBasket} key={"basketItem"+x.item.id}/>)}
-                <li>Por un total de: ${basketTotal}</li>
-            </ul>
-            <button onClick={()=>{buyBasket(basket, basketTotal)}}>Comprar</button>
+            {loading && <div>
+                <ul>
+                    {tempBasket.map(x => <CartItem setBasketChange={setBasketChange} basketItem={x} removeBasket={removeBasket} key={"basketItem"+x.item.id}/>)}
+                </ul>
+                <div>
+                    <p>Por un total de: ${basketTotal}</p>
+                    <button onClick={()=>{buyBasket(basket, basketTotal)}}>Comprar</button>
+                </div>
+            </div>}
         </div>
         )
 }
