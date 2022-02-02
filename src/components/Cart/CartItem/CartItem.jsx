@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Fragment } from "react/cjs/react.production.min";
 import "./CartItem.css"
 
-const CartItem = ({basketItem, removeBasket, setBasketChange})=>{
+const CartItem = ({basketItem, onRemove, setBasketChange})=>{
     const [remove, setRemove] = useState(true)
     const cost = basketItem.quantity * basketItem.item.price
     const removing = ()=>{
-        removeBasket(basketItem)
+        onRemove(basketItem)
         setRemove(false)
         setBasketChange(true)
     }

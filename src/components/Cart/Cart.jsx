@@ -3,11 +3,11 @@ import "./Cart.css"
 //Componentes
 import CartItemContainer from "./CartItemContainer/CartItemContainer";
 
-const Cart = ({basket, removeBasket, buyBasket})=>{
+const Cart = ({basket, onRemove, onBuy})=>{
     return(
         <section className="cartSection" >
             <h2>Canasta</h2>
-            <CartItemContainer basket={basket} removeBasket={removeBasket} buyBasket={buyBasket} />
+            <CartItemContainer basket={basket} onRemove={onRemove} onBuy={onBuy} />
         </section>
     )
 }

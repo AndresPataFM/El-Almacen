@@ -6,11 +6,9 @@ import "./ItemCount.css"
 import Swal from 'sweetalert2'
 
 
-const ItemCount = ({item, addBasket})=>{
-    //Estado del contador
-    const [count, setCount] = useState(1)
+const ItemCount = ({item, onAdd, count, setCount})=>{
     //Estado de los botones
-    const [showAddBasket, setShowAddBasket] = useState(true)
+    const [showonAdd, setShowonAdd] = useState(true)
     const [showReturn, setShowReturn] = useState(false)
     //resto de las Variables
     let stock = item.stock
@@ -42,27 +40,29 @@ const ItemCount = ({item, addBasket})=>{
     }
     //Funciones para mostrar/ocultar botones
     const buttonToggle = ()=>{
-        if(showAddBasket){
-            setShowAddBasket(false)
+        if(showonAdd){
+            setShowonAdd(false)
             setShowReturn(true)
         } else {
-            setShowAddBasket(true)
+            setShowonAdd(true)
             setShowReturn(false)
         }
     }
     //Funcion que temporalmente emula agregar algo al carro
     const addToCart = (item, quantity)=>{
-        addBasket(item, quantity)
+        onAdd(item, quantity)
         buttonToggle()
     }
     return(
         <Fragment>
-            <div className="counter">
-                <button onClick={()=>{substract(count)}} className="minusButton">-</button>
-                <p>&nbsp;{count}&nbsp;</p>
-                <button onClick={()=>{add(stock, count)}} className="plusButton">+</button>
-            </div>
-            {showAddBasket && <button className="addToCartButton" onClick={()=>{addToCart(item, count)}}>Agregar</button>}
+            {showonAdd && <div>
+                <div className="counter">
+                    <button onClick={()=>{substract(count)}} className="minusButton">-</button>
+                    <p>&nbsp;{count}&nbsp;</p>
+                    <button onClick={()=>{add(stock, count)}} className="plusButton">+</button>
+                </div>
+                <button className="addToCartButton" onClick={()=>{addToCart(item, count)}}>Agregar</button>
+            </div>}
             {showReturn && <div className="buttonContainer">
                 <Link to={"/"}><button className="purchaseMore">Comprar más</button></Link>
                 <Link to={"/canasta"}><button className="toBasket"> Terminar Compra</button></Link>

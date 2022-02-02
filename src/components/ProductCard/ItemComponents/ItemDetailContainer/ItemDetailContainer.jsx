@@ -4,7 +4,7 @@ import "./ItemDetailContainer.css"
 // Components
 import ItemDetail from "../ItemDetail/ItemDetail";
 
-const ItemDetailContainer = ({prodList, addBasket})=>{
+const ItemDetailContainer = ({prodList, onAdd})=>{
     const [description, setDescription] = useState([])
     const [loading, setLoading] = useState(false)
     const { id } = useParams()
@@ -23,7 +23,7 @@ const ItemDetailContainer = ({prodList, addBasket})=>{
     return(
         <section className="itemDetailContainerSection" >
             <h2>Producto</h2>
-            <ItemDetail loading={loading} item={description} addBasket={addBasket} key={"detailItem"}/>
+            <ItemDetail loading={loading} item={description} onAdd={onAdd} key={"detailItem"}/>
         </section>
     )
 }

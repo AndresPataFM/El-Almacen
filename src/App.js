@@ -37,7 +37,7 @@ function App() {
   //Canasta
   const [basket, setBasket] = useState([])
   //Funcion que agrega productos a la canasta
-  const addBasket = (item, quantity)=>{
+  const onAdd = (item, quantity)=>{
     const exist = products.find(x => x === item)
     const alreadyBasket = basket.find(x =>x.item === item)
     if(alreadyBasket){
@@ -62,7 +62,7 @@ function App() {
     })
     }
   }
-  const buyBasket = (bskt, total)=>{
+  const onBuy = (bskt, total)=>{
     let basketCount = bskt.length
     if(basketCount<1){
       Swal.fire(
@@ -89,7 +89,7 @@ function App() {
     }
   }
   //Funcion que remueve productos de la canasta
-  const removeBasket = (basketItem)=>{
+  const onRemove = (basketItem)=>{
     const alreadyBasket = basket.find(x =>x === basketItem)
     if(alreadyBasket){
       let index = basket.indexOf(basketItem)
@@ -103,9 +103,9 @@ function App() {
         <NavBar size={basket.length}/>
         <Routes>
           <Route path="/" exact element={<Landing prodList={products}/>}/>
-          <Route path="/canasta" element={<Cart basket={basket} removeBasket={removeBasket} buyBasket={buyBasket}/>}/>
-          <Route path="/item/:id" element={<ItemDetailContainer prodList={products} addBasket={addBasket}/>}/>
-          <Route path="/category/:type" element={<Category prodList={products} addBasket={addBasket}/>}/>
+          <Route path="/canasta" element={<Cart basket={basket} onRemove={onRemove} onBuy={onBuy}/>}/>
+          <Route path="/item/:id" element={<ItemDetailContainer prodList={products} onAdd={onAdd}/>}/>
+          <Route path="/category/:type" element={<Category prodList={products} />}/>
           <Route path="/nosotros" element={<AboutUs/>}/>
           <Route path="/adopcion" element={<Adoption/>}/>
           <Route path="/contacto" element={<Contact/>}/>

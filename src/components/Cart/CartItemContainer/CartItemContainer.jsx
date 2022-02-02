@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 //Components
 import CartItem from "../CartItem/CartItem";
 
-const CartItemContainer = ({basket, removeBasket, buyBasket})=>{
+const CartItemContainer = ({basket, onRemove, onBuy})=>{
     const [tempBasket, setTempBasket] = useState([])
     const [basketTotal, setBasketTotal] = useState(0)
     const [basketChange, setBasketChange] = useState(true)
@@ -32,11 +32,11 @@ const CartItemContainer = ({basket, removeBasket, buyBasket})=>{
         <div>
             {loading && <div>
                 <ul>
-                    {tempBasket.map(x => <CartItem setBasketChange={setBasketChange} basketItem={x} removeBasket={removeBasket} key={"basketItem"+x.item.id}/>)}
+                    {tempBasket.map(x => <CartItem setBasketChange={setBasketChange} basketItem={x} onRemove={onRemove} key={"basketItem"+x.item.id}/>)}
                 </ul>
                 <div>
                     <p>Por un total de: ${basketTotal}</p>
-                    <button onClick={()=>{buyBasket(basket, basketTotal)}}>Comprar</button>
+                    <button onClick={()=>{onBuy(basket, basketTotal)}}>Comprar</button>
                 </div>
             </div>}
         </div>
