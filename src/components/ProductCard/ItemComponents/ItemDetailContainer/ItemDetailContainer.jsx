@@ -1,14 +1,17 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { useParams } from "react-router-dom";
 import "./ItemDetailContainer.css"
 // Components
 import ItemDetail from "../ItemDetail/ItemDetail";
+//Context
+import { CartContext } from "../../../../context/CartContext/CartContext";
 
-const ItemDetailContainer = ({prodList, onAdd})=>{
+const ItemDetailContainer = ()=>{
     const [description, setDescription] = useState([])
     const [loading, setLoading] = useState(false)
     const { id } = useParams()
-    const currentItem = prodList.filter(x =>x.id===id)[0]
+    const {products} = useContext(CartContext)
+    const currentItem = products.filter(x =>x.id===id)[0]
     useEffect(()=>{
         const getDesc =  new Promise((resolve,reject)=>{
             setTimeout(()=>{
@@ -23,7 +26,7 @@ const ItemDetailContainer = ({prodList, onAdd})=>{
     return(
         <section className="itemDetailContainerSection" >
             <h2>Producto</h2>
-            <ItemDetail loading={loading} item={description} onAdd={onAdd} key={"detailItem"}/>
+            <ItemDetail loading={loading} item={description} key={"detailItem"}/>
         </section>
     )
 }

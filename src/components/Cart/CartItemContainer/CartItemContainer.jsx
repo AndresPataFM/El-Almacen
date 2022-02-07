@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 //Components
 import CartItem from "../CartItem/CartItem";
+//Context
+import { CartContext } from '../../../context/CartContext/CartContext';
 
-const CartItemContainer = ({basket, onRemove, onBuy})=>{
+const CartItemContainer = ()=>{
     const [tempBasket, setTempBasket] = useState([])
     const [basketTotal, setBasketTotal] = useState(0)
     const [basketChange, setBasketChange] = useState(true)
     const [loading, setLoading] = useState(false)
+    //Context
+    const {basket, onRemove, onBuy} = useContext(CartContext)
+    console.log({basket, onRemove, onBuy})
     useEffect(()=>{
         const getTotal =  new Promise((resolve,reject)=>{
             setTimeout(()=>{

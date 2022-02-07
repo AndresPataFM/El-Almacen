@@ -1,15 +1,19 @@
-import React, {useState, Fragment} from "react";
+import React, {useState, Fragment, useContext} from "react";
 import { Link } from "react-router-dom";
 import "./ItemCount.css"
+//Context
+import { CartContext } from "../../../../context/CartContext/CartContext";
 
 //Libraries
 import Swal from 'sweetalert2'
 
 
-const ItemCount = ({item, onAdd, count, setCount})=>{
+const ItemCount = ({item, count, setCount})=>{
     //Estado de los botones
     const [showonAdd, setShowonAdd] = useState(true)
     const [showReturn, setShowReturn] = useState(false)
+    //Context
+    const {onAdd} = useContext(CartContext)
     //resto de las Variables
     let stock = item.stock
     //Aumenta el contador en 1

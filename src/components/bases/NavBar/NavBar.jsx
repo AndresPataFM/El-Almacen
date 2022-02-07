@@ -8,7 +8,7 @@ import CartWidget from "../CartWidget/CartWidget";
 import logo from "./../../../img/dog-pawprint-in-a-house.svg"
 
 
-const NavBar = ({size})=>{
+const NavBar = ()=>{
     return(
         <header>
             <Link to={"/"}>
@@ -16,10 +16,7 @@ const NavBar = ({size})=>{
             </Link>
             <h1>El Almacén</h1>
             <div className="activeMenu">
-                <div>
-                    <Link to={'/canasta'}><CartWidget/></Link>
-                    <span>{size}</span>
-                </div>
+                <Link to={'/canasta'}><CartWidget/></Link>
                 <div className="menuHolder">
                     <button className="menuButton">☰</button>
                     <ul className="menu">

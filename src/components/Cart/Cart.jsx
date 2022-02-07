@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Cart.css"
 //Componentes
 import CartItemContainer from "./CartItemContainer/CartItemContainer";
 
-const Cart = ({basket, onRemove, onBuy})=>{
+
+const Cart = ()=>{
     return(
         <section className="cartSection" >
             <h2>Canasta</h2>
-            <CartItemContainer basket={basket} onRemove={onRemove} onBuy={onBuy} />
+            <CartItemContainer/>
         </section>
     )
 }

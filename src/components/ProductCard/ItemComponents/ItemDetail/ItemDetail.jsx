@@ -3,14 +3,16 @@ import { useState } from "react/cjs/react.development";
 import "./ItemDetail.css"
 // Components
 import ItemCount from "../ItemCount/ItemCount";
+
 // Img
 import fallback from "./../../../../img/products/fallback.png"
 
 
 
-const ItemDetail = ({item, onAdd, loading})=>{
+const ItemDetail = ({item, loading})=>{
     //Estado del contador
     const [count, setCount] = useState(1)
+    //Contexto
     let img
     try{
         img = require(`./../../../../img/products/${item.name+item.id}.png`)
@@ -25,7 +27,7 @@ const ItemDetail = ({item, onAdd, loading})=>{
             <p><span className="tag">Descripción: </span>{item.description}.</p>
             <p><span className="tag">Precio: </span>${item.price}</p>
             <p><span className="tag">Stock: </span>{item.stock}</p>
-            {loading && <ItemCount item={item} onAdd={onAdd} count={count} setCount={setCount} />}
+            {loading && <ItemCount item={item} count={count} setCount={setCount} />}
         </div>
     )
 }
