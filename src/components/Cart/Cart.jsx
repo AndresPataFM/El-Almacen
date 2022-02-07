@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Cart.css"
 //Componentes
 import CartItemContainer from "./CartItemContainer/CartItemContainer";
