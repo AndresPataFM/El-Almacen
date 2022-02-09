@@ -12,7 +12,7 @@ const CartItemContainer = ()=>{
     const [loading, setLoading] = useState(false)
     const [emptyBasket, setEmptyBasket] = useState(false)
     //Navigate
-    let navigate = useNavigate()
+    let navigateToLanding = useNavigate()
     //Context
     const {basket, basketLength, onRemove, onBuy} = useContext(CartContext)
     useEffect(()=>{
@@ -54,7 +54,7 @@ const CartItemContainer = ()=>{
                 </div>}
             </div> : <div>
                 <p>Su canasta esta vacia, para poder agregar objetos a su canasta por favor por aca:</p>
-                <button onClick={()=>{navigate(`/`)}}>Tienda</button>
+                <button onClick={()=>{navigateToLanding(`/`)}}>Tienda</button>
             </div> }
         </Fragment>
         )
