@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { Fragment } from "react/cjs/react.development";
 import { CartContext } from "./../../../context/CartContext/CartContext";
 
 import shoppingCart from "./../../../img/ShoppingCart.svg"
@@ -6,11 +7,24 @@ import "./CartWidget.css"
 
 const CartWidget = ()=>{
     const {basketLength} = useContext(CartContext)
+    const [empty, setEmpty] = useState(false)
+    useEffect(()=>{
+        const isEmpty=()=>{
+            if(basketLength !== 0){
+                setEmpty(true)
+            } else {
+                setEmpty(false)
+            }
+        }
+        isEmpty()
+    },[basketLength])
     return(
-        <div>
-            <img src={shoppingCart} alt="Carrito de compras" className="shoppingCart"/>
-            <span>{basketLength}</span>
-        </div>
+        <Fragment>
+            {empty && <div>
+                <img src={shoppingCart} alt="Carrito de compras" className="shoppingCart"/>
+                <span>{basketLength}</span>
+            </div>}
+        </Fragment>
     )
 }
 
