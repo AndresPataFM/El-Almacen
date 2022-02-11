@@ -22,6 +22,13 @@ instalar [AOS](https://michalsnik.github.io/aos/)
 npm install aos --save
 ```
 
+Instalar Firebase
+    Es una aplicación de google que nos permite generar una base de datos.
+
+```
+npm install --save firebase
+```
+
 ## Construido con
 Las imagenes del servicio de adopcion se van a conseguir del [TheCatApi](https://docs.thecatapi.com/) y [TheDogApi](https://docs.thedogapi.com/) (ambos fueron creados por el mismo equipo y funcionan identicamente).
 

@@ -1,20 +1,22 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Fragment } from 'react/cjs/react.development';
-import { useNavigate } from 'react-router-dom';
 //Components
 import CartItem from "../CartItem/CartItem";
 //Context
 import { CartContext } from '../../../context/CartContext/CartContext';
+import { Link } from 'react-router-dom';
 
 const CartItemContainer = ()=>{
     const [basketTotal, setBasketTotal] = useState(0)
     const [basketChange, setBasketChange] = useState(true)
     const [loading, setLoading] = useState(false)
     const [emptyBasket, setEmptyBasket] = useState(false)
-    //Navigate
-    let navigateToLanding = useNavigate()
     //Context
     const {basket, basketLength, onRemove, onBuy} = useContext(CartContext)
+    const buyBasket = ()=>{
+        onBuy(basket, basketTotal)
+        setBasketChange(true)
+    }
     useEffect(()=>{
         const getTotal =  new Promise((resolve,reject)=>{
             setTimeout(()=>{
@@ -49,12 +51,12 @@ const CartItemContainer = ()=>{
                     </ul>
                     {!basketChange ? <div>
                         <p>Por un total de: ${basketTotal}</p>
-                        <button onClick={()=>{onBuy(basket, basketTotal); setBasketChange(true)}}>Comprar</button>
+                        <button onClick={()=>{buyBasket()}}>Comprar</button>
                     </div> : <p>Loading...</p> }
                 </div>}
             </div> : <div>
                 <p>Su canasta esta vacia, para poder agregar objetos a su canasta por favor por aca:</p>
-                <button onClick={()=>{navigateToLanding(`/`)}}>Tienda</button>
+                <Link to={"/"}><button >Tienda</button></Link>
             </div> }
         </Fragment>
         )
