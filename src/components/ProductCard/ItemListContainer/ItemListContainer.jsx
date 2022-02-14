@@ -8,6 +8,14 @@ import { collection, getDocs } from "firebase/firestore";
 
 const ItemListContainer = ({type})=>{
     const [prodList, setProdList] = useState([])
+    // useEffect(()=>{
+    //     const getItems =  new Promise((resolve,reject)=>{
+    //         setTimeout(()=>{
+    //             products && products.length ? resolve(products) : reject("error 404")
+    //         }, 2000)
+    //     });
+    //     getItems.then((resolve)=>{setProdList(resolve)})
+    // }, [products]);
     useEffect(()=>{
         //Se declara funcion asincrona para poder usar una await
         const getFromFirebase   = async () => {

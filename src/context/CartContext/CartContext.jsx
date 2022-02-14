@@ -38,11 +38,8 @@ export const CartProvider = ({children})=>{
     const getTotal = ()=>{
         let tempTotal = 0
         basket.forEach(x => {
-            console.log(x.item.price)
-            console.log(x.quantity)
             tempTotal += x.item.price * x.quantity
         })
-        console.log(tempTotal)
         setBasketTotal(tempTotal)
     }
     //Funcion que agrega productos a la canasta
