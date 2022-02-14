@@ -12,7 +12,7 @@ const CartItemContainer = ()=>{
     const [loading, setLoading] = useState(false)
     const [emptyBasket, setEmptyBasket] = useState(false)
     //Context
-    const {basket, basketLength, onRemove, onBuy} = useContext(CartContext)
+    const {basket, basketLength, onRemove, onBuy, changeQuantity} = useContext(CartContext)
     const buyBasket = ()=>{
         onBuy(basket, basketTotal)
         setBasketChange(true)
@@ -47,7 +47,7 @@ const CartItemContainer = ()=>{
             {emptyBasket ? <div>
                 {loading && <div>
                     <ul>
-                        {basket.map(x => <CartItem setBasketChange={setBasketChange} basketItem={x} onRemove={onRemove} key={"basketItem"+x.item.id}/>)}
+                        {basket.map(x => <CartItem setBasketChange={setBasketChange} basketItem={x} onRemove={onRemove} changeQuantity={changeQuantity} key={"basketItem"+x.item.id}/>)}
                     </ul>
                     {!basketChange ? <div>
                         <p>Por un total de: ${basketTotal}</p>

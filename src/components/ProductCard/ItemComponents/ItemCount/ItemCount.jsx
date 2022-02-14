@@ -1,9 +1,11 @@
-import React, {useState, Fragment, useContext} from "react";
+import React, {useState, Fragment, useContext, useEffect} from "react";
 import { Link } from "react-router-dom";
 import "./ItemCount.css"
 //Context
 import { CartContext } from "../../../../context/CartContext/CartContext";
-
+//Data
+import { db } from "../../../../data/firebase";
+import { collection, getDocs } from "firebase/firestore";
 //Libraries
 import Swal from 'sweetalert2'
 
@@ -12,10 +14,23 @@ const ItemCount = ({item, count, setCount})=>{
     //Estado de los botones
     const [showonAdd, setShowonAdd] = useState(true)
     const [showReturn, setShowReturn] = useState(false)
+    const [prodList, setProdList] = useState([])
     //Context
     const {onAdd} = useContext(CartContext)
     //resto de las Variables
     let stock = item.stock
+    //Llamado a firebase
+    useEffect(()=>{
+        const getFromFirebase   = async () => {
+            let tempProdList = []
+            const queryTable = collection(db, "items")
+            const snapshot = await getDocs(queryTable)
+            snapshot.forEach(doc =>
+                tempProdList.push(doc.data()))
+            setProdList(tempProdList)
+        }
+        getFromFirebase()
+    }, [])
     //Aumenta el contador en 1
     const add = (stock, count)=>{
         if(stock>count){
@@ -53,8 +68,8 @@ const ItemCount = ({item, count, setCount})=>{
         }
     }
     //Funcion que temporalmente emula agregar algo al carro
-    const addToCart = (item, quantity)=>{
-        onAdd(item, quantity)
+    const addToCart = (item, quantity, products)=>{
+        onAdd(item, quantity, products)
         buttonToggle()
     }
     return(
@@ -65,7 +80,7 @@ const ItemCount = ({item, count, setCount})=>{
                     <p>&nbsp;{count}&nbsp;</p>
                     <button onClick={()=>{add(stock, count)}} className="plusButton">+</button>
                 </div>
-                <button className="addToCartButton" onClick={()=>{addToCart(item, count)}}>Agregar</button>
+                <button className="addToCartButton" onClick={()=>{addToCart(item, count, prodList)}}>Agregar</button>
             </div>}
             {showReturn && <div className="buttonContainer">
                 <Link to={"/"}><button className="purchaseMore">Comprar más</button></Link>

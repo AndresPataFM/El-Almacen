@@ -2,34 +2,40 @@ import React, { createContext, useState } from "react";
 //Libraries
 import Swal from 'sweetalert2';
 
-const prodList = [
-    {name:"Antipulgas Gato", id:"001", type:"Medicinal", price:"450", stock:"32", description:"Antipulgas felino Frontline Plus",},
-    {name:"Antipulgas Perro", id:"002", type:"Medicinal", price:"450", stock:"28", description:"Antipulgas Canino Frontline Plus",},
-    {name:"Antiparasitario", id:"003", type:"Medicinal", price:"370", stock:"15", description:"Antiparasitario interno Oral Paraqueños",},
-    {name:"Alimento Gato Joven", id:"004", type:"Medicinal", price:"4530", stock:"18", description:"Alimento para gatos Kitten de Royal Canin",},
-    {name:"Alimento Gato Adulto", id:"005", type:"Alimento", price:"3900", stock:"27", description:"Alimento para gatos adultos Royal Canin Active Life",},
-    {name:"Alimento Gato Edad Avanzada", id:"006", type:"Alimento", price:"4620", stock:"15", description:"Alimento para gatos de edad avanzada Royal Canin Mature Consult Stage 1",},
-    {name:"Alimento Perro Joven", id:"007", type:"Alimento", price:"4450", stock:"22", description:"Alimento para perros jóvenes de tamaño mediano Royal Canin Puppy Medium.",},
-    {name:"Alimento Perro Adulto", id:"008", type:"Alimento", price:"3780", stock:"24", description:"Alimento para perros adultos de tamaño mediano Royal Canin Adult Medium.",},
-    {name:"Alimento Perro Edad Avanzada", id:"009", type:"Alimento", price:"4370", stock:"11", description:"Alimento para perros de edad avanzada de tamaño mediano Royal Canin Adgeing",},
-    {name:"Juguete de Ratón", id:"010", type:"Juguete", price:"170", stock:"10", description:"Un juguete de ratón de plastico y tela hipoalergénicos",},
-    {name:"Hueso Comestible", id:"011", type:"Alimento", price:"450", stock:"7", description:"12(Doce) unidades de huesos comestibles de cuero para perros",},
-    {name:"Pelota", id:"012", type:"Juguete", price:"210", stock:"9", description:"Pelota plástica hipoalergénica chillona de mascotas (díametro de 12 cm)",},
-]
+// const prodList = [
+//     {name:"Antipulgas Gato", id:"001", type:"Medicinal", price:"450", stock:"32", description:"Antipulgas felino Frontline Plus",},
+//     {name:"Antipulgas Perro", id:"002", type:"Medicinal", price:"450", stock:"28", description:"Antipulgas Canino Frontline Plus",},
+//     {name:"Antiparasitario", id:"003", type:"Medicinal", price:"370", stock:"15", description:"Antiparasitario interno Oral Paraqueños",},
+//     {name:"Alimento Gato Joven", id:"004", type:"Medicinal", price:"4530", stock:"18", description:"Alimento para gatos Kitten de Royal Canin",},
+//     {name:"Alimento Gato Adulto", id:"005", type:"Alimento", price:"3900", stock:"27", description:"Alimento para gatos adultos Royal Canin Active Life",},
+//     {name:"Alimento Gato Edad Avanzada", id:"006", type:"Alimento", price:"4620", stock:"15", description:"Alimento para gatos de edad avanzada Royal Canin Mature Consult Stage 1",},
+//     {name:"Alimento Perro Joven", id:"007", type:"Alimento", price:"4450", stock:"22", description:"Alimento para perros jóvenes de tamaño mediano Royal Canin Puppy Medium.",},
+//     {name:"Alimento Perro Adulto", id:"008", type:"Alimento", price:"3780", stock:"24", description:"Alimento para perros adultos de tamaño mediano Royal Canin Adult Medium.",},
+//     {name:"Alimento Perro Edad Avanzada", id:"009", type:"Alimento", price:"4370", stock:"11", description:"Alimento para perros de edad avanzada de tamaño mediano Royal Canin Adgeing",},
+//     {name:"Juguete de Ratón", id:"010", type:"Juguete", price:"170", stock:"10", description:"Un juguete de ratón de plastico y tela hipoalergénicos",},
+//     {name:"Hueso Comestible", id:"011", type:"Alimento", price:"450", stock:"7", description:"12(Doce) unidades de huesos comestibles de cuero para perros",},
+//     {name:"Pelota", id:"012", type:"Juguete", price:"210", stock:"9", description:"Pelota plástica hipoalergénica chillona de mascotas (díametro de 12 cm)",},
+// ]
 
 export const CartContext = createContext();
 
 export const CartProvider = ({children})=>{
     //Productos
-    const [products, setProducts] = useState(prodList)
+    // const [products, setProducts] = useState(prodList)
     //Canasta
     const [basket, setBasket] = useState([])
     //Estado de tamaño de la canasta
     const [basketLength, setBasketLength] = useState(0)
+    //Funcion que calcula la cantidad de items total en la canasta
+    const onBasketChange = ()=>{
+        let tempCount = 0
+        basket.forEach(x => tempCount+=x.quantity)
+        setBasketLength(tempCount)
+    }
     //Funcion que agrega productos a la canasta
-    const onAdd = (item, quantity)=>{
-        const exist = products.find(x => x === item)
-        const alreadyBasket = basket.find(x =>x.item === item)
+    const onAdd = (item, quantity, products)=>{
+        const exist = products.find(x => x.id === item.id)
+        const alreadyBasket = basket.find(x =>x.item.id === item.id)
         if(alreadyBasket){
         Swal.fire(
             'Ese producto ya se encuentra en su canasta',
@@ -40,7 +46,7 @@ export const CartProvider = ({children})=>{
         let tempBasket = basket
         tempBasket.push({item: item, quantity: quantity})
         setBasket(tempBasket)
-        setBasketLength(basket.length)
+        onBasketChange()
         Swal.fire({
             title: `Felicitaciones`,
             text: `Se ha agregado ${quantity} unidad/es de ${item.name} a su canasta.`,
@@ -62,14 +68,14 @@ export const CartProvider = ({children})=>{
             'error'
         )
         } else {
-        let tempProducts = products
-        tempProducts.forEach(x=>{
-            bskt.forEach(y=>{
-            if(y.item.code === x.code){
-                x.stock-=y.quantity
-            }
-            })
-        })
+        // let tempProducts = products
+        // tempProducts.forEach(x=>{
+        //     bskt.forEach(y=>{
+        //     if(y.item.code === x.code){
+        //         x.stock-=y.quantity
+        //     }
+        //     })
+        // })
         Swal.fire(
             'Gracias por comprar',
             `Ha comprado ${basketCount} productos distintos por un total de $${total}`,
@@ -77,7 +83,7 @@ export const CartProvider = ({children})=>{
         )
         setBasket([])
         setBasketLength(0)
-        setProducts(tempProducts)
+        // setProducts(tempProducts)
         }
     }
     //Funcion que remueve productos de la canasta
@@ -88,11 +94,37 @@ export const CartProvider = ({children})=>{
         let tempBasket = basket
         tempBasket.splice(index, 1)
         setBasket(tempBasket)
-        setBasketLength(basket.length)
+        onBasketChange()
+        }
+    }
+    //Funcion que permite cambiar la cantidad de un item en la canasta
+    const changeQuantity = (item, quantity)=>{
+        const changedQuantity = Number(quantity)
+        if(changedQuantity<1){
+            Swal.fire(
+                'Error',
+                'Se necesita comprar al menos 1 objeto.',
+                'error'
+            )
+        } else if(item.stock<changedQuantity){
+            Swal.fire(
+                'Error',
+                'No hay suficiente stock como para cumplir con el pedido.',
+                'error'
+            )
+        } else if (changedQuantity>1 && changedQuantity<item.stock){
+            let tempBasket = basket
+            tempBasket.forEach((x)=>{
+                if(x.item.id === item.id){
+                    x.quantity = changedQuantity
+                }
+            })
+            setBasket(tempBasket)
+            onBasketChange()
         }
     }
     return(
-        <CartContext.Provider value={{basket, basketLength ,products, onAdd, onRemove, onBuy}}>
+        <CartContext.Provider value={{basket, basketLength, onAdd, onRemove, onBuy, changeQuantity}}>
             {children}
         </CartContext.Provider>
     )
