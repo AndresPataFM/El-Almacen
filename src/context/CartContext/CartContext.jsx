@@ -24,13 +24,26 @@ export const CartProvider = ({children})=>{
     // const [products, setProducts] = useState(prodList)
     //Canasta
     const [basket, setBasket] = useState([])
-    //Estado de tamaño de la canasta
+    //Estado de tamaño de items totales de la canasta
     const [basketLength, setBasketLength] = useState(0)
+    //Estado del precio total de la canasta
+    const [basketTotal, setBasketTotal] = useState(0)
     //Funcion que calcula la cantidad de items total en la canasta
     const onBasketChange = ()=>{
         let tempCount = 0
         basket.forEach(x => tempCount+=x.quantity)
         setBasketLength(tempCount)
+    }
+    //Funcion que calcula el precio total de la canasta
+    const getTotal = ()=>{
+        let tempTotal = 0
+        basket.forEach(x => {
+            console.log(x.item.price)
+            console.log(x.quantity)
+            tempTotal += x.item.price * x.quantity
+        })
+        console.log(tempTotal)
+        setBasketTotal(tempTotal)
     }
     //Funcion que agrega productos a la canasta
     const onAdd = (item, quantity, products)=>{
@@ -47,6 +60,7 @@ export const CartProvider = ({children})=>{
         tempBasket.push({item: item, quantity: quantity})
         setBasket(tempBasket)
         onBasketChange()
+        getTotal()
         Swal.fire({
             title: `Felicitaciones`,
             text: `Se ha agregado ${quantity} unidad/es de ${item.name} a su canasta.`,
@@ -83,6 +97,7 @@ export const CartProvider = ({children})=>{
         )
         setBasket([])
         setBasketLength(0)
+        setBasketTotal(0)
         // setProducts(tempProducts)
         }
     }
@@ -95,6 +110,7 @@ export const CartProvider = ({children})=>{
         tempBasket.splice(index, 1)
         setBasket(tempBasket)
         onBasketChange()
+        getTotal()
         }
     }
     //Funcion que permite cambiar la cantidad de un item en la canasta
@@ -121,10 +137,11 @@ export const CartProvider = ({children})=>{
             })
             setBasket(tempBasket)
             onBasketChange()
+            getTotal()
         }
     }
     return(
-        <CartContext.Provider value={{basket, basketLength, onAdd, onRemove, onBuy, changeQuantity}}>
+        <CartContext.Provider value={{basket, basketLength, basketTotal, onAdd, onRemove, onBuy, changeQuantity}}>
             {children}
         </CartContext.Provider>
     )

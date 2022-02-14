@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { Fragment } from "react/cjs/react.production.min";
 import "./CartItem.css"
 
-const CartItem = ({basketItem, onRemove, setBasketChange, changeQuantity})=>{
+const CartItem = ({basketItem, onRemove, changeQuantity})=>{
     const [remove, setRemove] = useState(true)
     const [quantity, setQuantity] = useState(basketItem.quantity)
     const [cost, setCost] = useState(basketItem.quantity * basketItem.item.price)
     const removing = ()=>{
         onRemove(basketItem)
         setRemove(false)
-        setBasketChange(true)
     }
     const changeAmount = ()=>{
         changeQuantity(basketItem.item, quantity)
         setCost(quantity*basketItem.item.price)
-        setBasketChange(true)
     }
     return(
         <Fragment>
