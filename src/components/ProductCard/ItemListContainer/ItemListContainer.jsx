@@ -32,8 +32,10 @@ const ItemListContainer = ({type})=>{
             // const snapshop
             const snapshot = await getDocs(queryTable)
             //Los datos de la colleccion los obtengo con ".data()", para recorrerlo hay que usar forEach, porque el objeto de firebase no se puede recorrer con map
-            snapshot.forEach(doc =>
-                tempProdList.push(doc.data()))
+            snapshot.forEach(doc =>{
+                tempProdList.push(doc.data())
+                console.log(doc.id)
+            })
             setProdList(tempProdList)
         }
         getFromFirebase()

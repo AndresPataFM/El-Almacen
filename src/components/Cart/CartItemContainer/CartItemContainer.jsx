@@ -2,12 +2,13 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Fragment } from 'react/cjs/react.development';
 //Components
 import CartItem from "../CartItem/CartItem";
+import Buy from '../Buy/Buy';
 //Context
 import { CartContext } from '../../../context/CartContext/CartContext';
 import { Link } from 'react-router-dom';
 
 const CartItemContainer = ()=>{
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [emptyBasket, setEmptyBasket] = useState(false)
     //Context
     const {basket, basketLength, onRemove, onBuy, changeQuantity, basketTotal} = useContext(CartContext)
@@ -15,16 +16,18 @@ const CartItemContainer = ()=>{
         onBuy(basket, basketTotal)
     }
     useEffect(()=>{
-        const getTotal =  new Promise((resolve,reject)=>{
+        const checkEmpty =  new Promise((resolve,reject)=>{
             setTimeout(()=>{
                 if(basketLength === 0){
                     setEmptyBasket(false)
+                    setLoading(false)
                 } else {
                     setEmptyBasket(true)
+                    setLoading(true)
                 }
             }, 2000)
         });
-        getTotal.then()
+        checkEmpty.then()
     }, [basketLength]);
     return(
         <Fragment>
@@ -35,13 +38,13 @@ const CartItemContainer = ()=>{
                     </ul>
                     <div>
                         <p>Por un total de: ${basketTotal}</p>
-                        <button onClick={()=>{buyBasket()}}>Comprar</button>
                     </div>
                 </div>}
             </div> : <div>
                 <p>Su canasta esta vacia, para poder agregar objetos a su canasta por favor por aca:</p>
                 <Link to={"/"}><button >Tienda</button></Link>
             </div> }
+            <Buy basket={basket} basketTotal={basketTotal} buyBasket={buyBasket} />
         </Fragment>
         )
 }

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Fragment } from "react/cjs/react.development";
 import { CartContext } from "./../../../context/CartContext/CartContext";
 
 import shoppingCart from "./../../../img/ShoppingCart.svg"
@@ -19,12 +18,12 @@ const CartWidget = ()=>{
         isEmpty()
     },[basketLength])
     return(
-        <Fragment>
+        <div>
             {empty && <div>
                 <img src={shoppingCart} alt="Carrito de compras" className="shoppingCart"/>
                 <span>{basketLength}</span>
             </div>}
-        </Fragment>
+        </div>
     )
 }
 
