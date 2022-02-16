@@ -37,9 +37,7 @@ const Buy = ({basket, basketTotal, buyBasket})=>{
     }
     const order = ()=>{
         let tempOrder = BuyOrder()
-        console.log(tempOrder)
         addDoc(collection(db, "orders"), tempOrder).then(doc =>{
-            console.log(doc.id)
             setOrderId(doc.id)
         }).catch(err => {
             console.log("Error: ", err)
