@@ -43,10 +43,31 @@
     height: fit-content;
 }
 @media only screen and (max-width: 1024px) {
+    .aboutArticle{
+        justify-content: center;
+    }
+    .holder{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .aboutUsImg{
+        margin: none;
+    }
+    .aboutUsSection{
+        width: 100%;
+    }
     .articleDiv{
         flex-direction: column;
     }
+    .aboutUsTitles{
+        width: 80%;
+        text-align: center;
+    }
 }
-@media only screen and (max-width: 540px) {
-
+@media only screen and (max-width: 744px) {
+    .aboutUsImg{
+        width: 350px;
+    }
 }

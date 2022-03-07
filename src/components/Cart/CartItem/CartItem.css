@@ -5,3 +5,6 @@
     border-radius: 3px;
     margin-right: 5px;
 }
+.cartItem input{
+    width: 30px;
+}

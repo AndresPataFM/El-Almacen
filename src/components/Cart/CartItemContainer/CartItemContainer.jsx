@@ -39,7 +39,7 @@ const CartItemContainer = ()=>{
                         {basket.map(x => <CartItem basketItem={x} onRemove={onRemove} changeQuantity={changeQuantity} key={"basketItem"+x.item.id}/>)}
                     </ul>
                     <div>
-                        <p>Por un total de: ${basketTotal}</p>
+                        <p><b>Por un total de: <i>${basketTotal}</i></b></p>
                     </div>
                 </div>}
             </div> : <div className='emptyBasket'>

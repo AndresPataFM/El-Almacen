@@ -16,13 +16,15 @@ const CartItem = ({basketItem, onRemove, changeQuantity})=>{
     }
     return(
         <Fragment>
-            {remove && <li><div>
+            {remove && <li className="cartItem"><div>
                 <button onClick={()=>{removing()}} className="remove" >X</button>
-                <span>Item:{basketItem.item.name}</span>
+                <span><b>Item: </b><i>{basketItem.item.name}</i></span>
+                <span><b> | </b></span>
                 <label htmlFor={basketItem.item.id} >Cantidad: </label>
                 <input type="number" defaultValue={basketItem.quantity} onInput={e => setQuantity(e.target.value)} id={basketItem.item.id}/>
-                <button onClick={()=>{changeAmount()}} >Cambiar cantidad</button>
-                <span> Por: {cost}</span>
+                <button onClick={()=>{changeAmount()}} ><b>⭮</b></button>
+                <span><b> | </b></span>
+                <span> Por: <b>${cost}</b></span>
                 </div></li>}
         </Fragment>
     )
