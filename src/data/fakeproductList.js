@@ -13,29 +13,3 @@ const prodList = [
     {name:"Pelota", id:"012", type:"Juguete", price:"210", stock:"9", description:"Pelota plástica hipoalergénica chillona de mascotas (díametro de 12 cm)",},
 ]
 export default prodList
-
-// ---- Descripcion de como usar la database para que no este en el App.js
-//Database
-// import {collection, getDocs } from "firebase/firestore";
-// import { db } from './data/firebase';
-//   useEffect(()=>{
-//     //Se declara funcion asincrona para poder usar una await
-//     const getFromFirebase = async () => {
-//       //trae copia de la referencia de la base de datos
-//       //Query trae la tabla items
-//       const queryTable = collection(db, "items")
-//       /* Para buscar solo 1 objeto, es necesario importar query y where de "firebase/firestore"
-//       const queryOneObject = query(queryTable, where("id", "==", "001"))
-//       */
-//       //getDocs trae la documentacion del query, getDoc trae solo 1, hay que importarlos desde "firebase/firestore"
-//       // hay que importar doc
-//       // const docRef = doc(db, "tabla", "key")
-//       // const snapshop
-//       const snapshot = await getDocs(queryTable)
-//       //Los datos de la colleccion los obtengo con ".data()", para recorrerlo hay que usar forEach, porque el objeto de firebase no se puede recorrer con map
-//       snapshot.forEach(doc => {
-//         console.log(doc.data())
-//       })
-//     }
-//     getFromFirebase()
-//   }, [])
