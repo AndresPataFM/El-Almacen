@@ -1,4 +1,14 @@
+
 .shoppingCart{
     filter: invert(99%) sepia(58%) saturate(6%) hue-rotate(210deg) brightness(114%) contrast(92%);
     height: 50px;
+}
+.widgetCounter{
+    background-color: #561b8e;
+    color: whitesmoke;
+    width: fit-content;
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
 }

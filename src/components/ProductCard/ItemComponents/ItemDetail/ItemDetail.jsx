@@ -24,7 +24,7 @@ const ItemDetail = ({item, loading})=>{
             <h3 className="descName">{item.name}</h3>
             <img src={img} alt={item.name} />
             <p><span className="tag">Tipo: </span>{item.type}</p>
-            <p><span className="tag">Descripción: </span>{item.description}.</p>
+            <p className="itemDescP"><span className="tag">Descripción: </span>{item.description}.</p>
             <p><span className="tag">Precio: </span>${item.price}</p>
             <p><span className="tag">Stock: </span>{item.stock}</p>
             {loading && <ItemCount item={item} count={count} setCount={setCount} />}

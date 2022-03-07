@@ -11,7 +11,7 @@
     padding-top: 2px;
 }
 .minusButton{
-    height: 25px;
+    height: 27px;
     width: 25px;
     border-radius: 5px 0 0 5px;
     text-align: center;
@@ -22,7 +22,7 @@
     font-weight: bold;
 }
 .plusButton{
-    height: 25px;
+    height: 27px;
     width: 25px;
     border-radius: 0 5px 5px 0;
     text-align: center;
@@ -47,8 +47,10 @@
 .purchaseMore{
     margin: 2px;
     border:  3px outset green;
+    border-radius: 5px;
 }
 .toBasket{
     margin: 2px;
     border:  3px outset crimson;
+    border-radius: 5px;
 }

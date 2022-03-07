@@ -1,6 +1,6 @@
 # El-Almacen
 
-Esta pagina es un ecommerce creado en react que simula una petshop con servicios de adopción (la parte de adopción esta en desarrollo).
+Esta pagina es un ecommerce creado en react que simula una petshop con servicios de adopción.
 
 ## Routing
 ![Routing](./src/img/ElAlmacen.gif)
@@ -29,7 +29,9 @@ Instalar Firebase
 npm install --save firebase
 ```
 
-## Construido con
+## A futuro
+La página se va a expandir con un servicio de adopcion virtual.
+
 Las imagenes del servicio de adopcion se van a conseguir del [TheCatApi](https://docs.thecatapi.com/) y [TheDogApi](https://docs.thedogapi.com/) (ambos fueron creados por el mismo equipo y funcionan identicamente).
 
 Actualmente, se piensa a futuro mover la tienda a una pestaña aparte y poner recomendaciones de productos en el landing.

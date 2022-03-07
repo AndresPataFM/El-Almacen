@@ -10,3 +10,15 @@
     border-radius: 15px;
     border: 5px outset blueviolet;
 }
+
+.itemButton{
+    background-color: blueviolet;
+    border-radius: 5px;
+    color: whitesmoke;
+    border-color: blueviolet;
+}
+
+.itemButton:hover{
+    background-color: #561b8e;
+    border-color: #561b8e;
+}

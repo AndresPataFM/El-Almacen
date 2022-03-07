@@ -1,6 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 import React, { useState } from "react";
 import { db } from "../../../data/firebase";
+import "./Buy.css"
 
 const Buy = ({basket, basketTotal, buyBasket})=>{
     //Estados para los inputs
@@ -50,19 +51,19 @@ const Buy = ({basket, basketTotal, buyBasket})=>{
         setEndedPurchase(true)
     }
     return(
-        <div>
+        <div className="buyProcedure">
             {endedPurchase ? 
             <div>
-                <p>Gracias por su compra, su número de orden es: <span>{orderId}</span></p>
+                <p>Gracias por su compra, su número de orden es: <span className="orderID">{orderId}</span></p>
             </div>
             :
             <form onSubmit={finalizePurchase}>
                 <label htmlFor="" id="buyerName">Nombre</label>
-                <input type="text" id="buyerName" onInput={e => setBuyerName(e.target.value)}/>
+                <input type="text" required id="buyerName" onInput={e => setBuyerName(e.target.value)}/>
                 <label htmlFor="">Telefono: </label>
-                <input type="number" id="buyerPhone" onInput={e => setBuyerPhone(e.target.value)}/>
+                <input type="number" required id="buyerPhone" onInput={e => setBuyerPhone(e.target.value)}/>
                 <label htmlFor="buyerEmail">Email: </label>
-                <input type="email" id="buyerEmail" onInput={e => setBuyerEmail(e.target.value)}/>
+                <input type="email" required id="buyerEmail" onInput={e => setBuyerEmail(e.target.value)}/>
                 <button type="submit">Comprar</button>
             </form>
             }

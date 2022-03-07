@@ -21,7 +21,7 @@ const CartWidget = ()=>{
         <div>
             {empty && <div>
                 <img src={shoppingCart} alt="Carrito de compras" className="shoppingCart"/>
-                <span>{basketLength}</span>
+                <span className="widgetCounter">{basketLength}</span>
             </div>}
         </div>
     )

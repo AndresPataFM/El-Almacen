@@ -8,7 +8,7 @@ import CartWidget from "../CartWidget/CartWidget";
 import logo from "./../../../img/dog-pawprint-in-a-house.svg"
 
 
-const NavBar = ()=>{
+const NavBar = ({categories})=>{
     return(
         <header>
             <Link to={"/"}>
@@ -18,11 +18,8 @@ const NavBar = ()=>{
             <div className="activeMenu">
                 <Link to={'/canasta'}><CartWidget/></Link>
                 <div className="menuHolder">
-                    <button className="menuButton">☰</button>
                     <ul className="menu">
-                        <li><Link to={"/"}>Home</Link></li>
-                        <li><Link to={"/nosotros"}>Nosotros</Link></li>
-                        <li><Link to={"/contacto"}>Contacto</Link></li>
+                        {categories.map(x => <li><Link to={x.link}>{x.name}</Link></li>)}
                     </ul>
                 </div>
             </div>

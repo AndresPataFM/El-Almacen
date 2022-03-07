@@ -7,6 +7,8 @@ import Buy from '../Buy/Buy';
 import { CartContext } from '../../../context/CartContext/CartContext';
 import { Link } from 'react-router-dom';
 
+import "./CartItemContainer.css"
+
 const CartItemContainer = ()=>{
     const [loading, setLoading] = useState(false)
     const [emptyBasket, setEmptyBasket] = useState(false)
@@ -40,9 +42,9 @@ const CartItemContainer = ()=>{
                         <p>Por un total de: ${basketTotal}</p>
                     </div>
                 </div>}
-            </div> : <div>
+            </div> : <div className='emptyBasket'>
                 <p>Su canasta esta vacia, para poder agregar objetos a su canasta por favor por aca:</p>
-                <Link to={"/"}><button >Tienda</button></Link>
+                <Link to={"/"}><button className='shopButton'>Tienda</button></Link>
             </div> }
             <Buy basket={basket} basketTotal={basketTotal} buyBasket={buyBasket} />
         </Fragment>

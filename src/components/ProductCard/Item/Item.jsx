@@ -21,7 +21,7 @@ const Item = ({item})=>{
             <p>{product.name}</p>
             <img src={img} alt={product.name} />
             <p>Precio: ${product.price}</p>
-            <button onClick={()=>{goToItem()}}>Detalles</button>
+            <button onClick={()=>{goToItem()}} className="itemButton" >Detalles</button>
         </div>
     )
 }

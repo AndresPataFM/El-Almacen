@@ -6,3 +6,19 @@
     grid-row-gap: 20px;
     justify-items: center;
 }
+@media only screen and (max-width: 1450px) {
+    .cardContainer{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .cardContainer{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media only screen and (max-width: 764px) {
+    .cardContainer{
+        grid-template-columns: 1fr;
+    }
+}
