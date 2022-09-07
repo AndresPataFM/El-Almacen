@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Fragment } from 'react/cjs/react.development';
 //Components
 import CartItem from "../CartItem/CartItem";
 import Buy from '../Buy/Buy';
@@ -18,7 +17,7 @@ const CartItemContainer = ()=>{
         onBuy(basket, basketTotal)
     }
     useEffect(()=>{
-        const checkEmpty =  new Promise((resolve,reject)=>{
+        const checkEmpty =  new Promise(()=>{
             setTimeout(()=>{
                 if(basketLength === 0){
                     setEmptyBasket(false)
@@ -32,7 +31,7 @@ const CartItemContainer = ()=>{
         checkEmpty.then()
     }, [basketLength]);
     return(
-        <Fragment>
+        <div>
             {emptyBasket ? <div>
                 {loading && <div>
                     <ul>
@@ -47,7 +46,7 @@ const CartItemContainer = ()=>{
                 <Link to={"/"}><button className='shopButton'>Tienda</button></Link>
             </div> }
             <Buy basket={basket} basketTotal={basketTotal} buyBasket={buyBasket} />
-        </Fragment>
+        </div>
         )
 }
 

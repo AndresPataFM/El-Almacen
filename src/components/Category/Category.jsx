@@ -28,7 +28,6 @@ const Category = ()=>{
             //Los datos de la colleccion los obtengo con ".data()", para recorrerlo hay que usar forEach, porque el objeto de firebase no se puede recorrer con map
             snapshot.forEach(doc =>{
                 tempCategoryList.push(doc.data())
-                console.log(doc.data())
             })
             setCategoryList(tempCategoryList)
         }
