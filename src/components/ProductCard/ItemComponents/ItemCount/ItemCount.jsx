@@ -10,8 +10,9 @@ import { collection, getDocs } from "firebase/firestore";
 import Swal from 'sweetalert2'
 
 
-const ItemCount = ({item, count, setCount})=>{
+const ItemCount = ({item})=>{
     //Estado de los botones
+    const [count, setCount] = useState(1)
     const [showonAdd, setShowonAdd] = useState(true)
     const [showReturn, setShowReturn] = useState(false)
     const [prodList, setProdList] = useState([])
