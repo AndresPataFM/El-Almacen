@@ -19,7 +19,7 @@ const NavBar = ({categories})=>{
                 <Link to={'/canasta'}><CartWidget/></Link>
                 <div className="menuHolder">
                     <ul className="menu">
-                        {categories.map(x => <li><Link to={x.link}>{x.name}</Link></li>)}
+                        {categories.map(x => <li key={x.link+x.name}><Link to={x.link} >{x.name}</Link></li>)}
                     </ul>
                 </div>
             </div>

@@ -1,4 +1,7 @@
 /* Mios */
+html, body, #root{
+  min-height: 100vh;
+}
 body{
   background-color: whitesmoke;
   font-size: 18px;
@@ -6,9 +9,9 @@ body{
   color: #444444;
 }
 #root{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
 }
 
 @media only screen and (max-width: 1024px) {
