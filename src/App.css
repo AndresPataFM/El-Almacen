@@ -12,6 +12,7 @@ body{
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
+  justify-items: center;
 }
 
 @media only screen and (max-width: 1024px) {
